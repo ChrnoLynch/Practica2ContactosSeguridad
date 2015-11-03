@@ -279,7 +279,8 @@ public class ActividadPrincipal extends AppCompatActivity {
     public void sincronizar() throws IOException, XmlPullParserException {
         edit=preSincro.edit();
         calendar=new GregorianCalendar();
-        edit.putString("TIME", calendar.getTime().toString());
+        Date d=calendar.getTime();
+        edit.putString("TIME", d.getDay()+"/"+d.getMonth()+"/"+(d.getYear()+1900)+"  "+d.getHours()+":"+d.getMinutes());
         edit.commit();
         fecha();
         agenda=new Agenda(unionAgendas());
